@@ -1,0 +1,101 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Assets/Button_theme.tres" type="Theme" id=1]
+[ext_resource path="res://Assets/Menu.png" type="Texture" id=2]
+[ext_resource path="res://Assets/HowToPlay.png" type="Texture" id=3]
+[ext_resource path="res://Assets/font_40.tres" type="DynamicFont" id=4]
+[ext_resource path="res://SourceCode/HowToPlay.gd" type="Script" id=5]
+[ext_resource path="res://Assets/Click.wav" type="AudioStream" id=7]
+[ext_resource path="res://SourceCode/RossPopup.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/Player_theme.tres" type="Theme" id=10]
+
+[node name="HowToPlay" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -1460.0
+margin_top = -1120.0
+margin_right = 2540.0
+margin_bottom = 2880.0
+mouse_filter = 2
+color = Color( 0.313726, 0.486275, 0.486275, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HowToPlayLabel" type="Button" parent="."]
+margin_left = 100.0
+margin_top = 200.0
+margin_right = 980.0
+margin_bottom = 359.0
+theme = ExtResource( 10 )
+disabled = true
+text = "How To Play"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClickAudio" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 0, -120 )
+stream = ExtResource( 7 )
+
+[node name="RossPopup" parent="." instance=ExtResource( 8 )]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = 930.0
+margin_right = 1080.0
+margin_bottom = 150.0
+
+[node name="HomeButton" type="TextureButton" parent="."]
+margin_right = 150.0
+margin_bottom = 150.0
+focus_mode = 0
+theme = ExtResource( 1 )
+enabled_focus_mode = 0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="Label" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 120.0
+margin_top = 790.0
+margin_right = 1000.0
+margin_bottom = 1669.0
+custom_fonts/font = ExtResource( 4 )
+text = "Your goal is to find a path through a \"number labyrinth\".
+
+In each level, pieces on the map are assigned a random value. Your goal is to find a path from the bottom left corner to the top right corner. The sum of numbers on your route should match the value of the final piece. You can move by swiping up,  down,  left or right.
+
+In the example above, the target score (upper right piece) is 6. A valid route will be to swipe up (+1), swipe right (1+3=4), swipe up (4+2=6) and finally swipe right (get to the target). 
+
+If you want to restart, you can press the \"new\" button that will be available during gameplay.  "
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 320.0
+margin_top = 370.0
+margin_right = 720.0
+margin_bottom = 770.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClickAudio2" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 0, -120 )
+stream = ExtResource( 7 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 540, 960 )
+current = true
+[connection signal="pressed" from="HomeButton" to="." method="_on_HomeButton_pressed"]

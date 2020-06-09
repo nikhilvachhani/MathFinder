@@ -1,0 +1,268 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://admob-lib/admob.gd" type="Script" id=1]
+[ext_resource path="res://SourceCode/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://SourceCode/Target.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Click.wav" type="AudioStream" id=4]
+[ext_resource path="res://SourceCode/RossPopup.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Menu.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Player_theme.tres" type="Theme" id=7]
+[ext_resource path="res://Assets/Button_theme.tres" type="Theme" id=8]
+[ext_resource path="res://SourceCode/RoundController.gd" type="Script" id=9]
+[ext_resource path="res://Assets/font_80.tres" type="DynamicFont" id=10]
+[ext_resource path="res://Assets/Cross.png" type="Texture" id=11]
+[ext_resource path="res://Assets/font_40.tres" type="DynamicFont" id=12]
+[ext_resource path="res://Assets/Move.wav" type="AudioStream" id=13]
+
+[node name="RoundController" type="Node2D"]
+script = ExtResource( 9 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -1379.72
+margin_top = -1142.74
+margin_right = 2620.28
+margin_bottom = 2857.26
+mouse_filter = 2
+color = Color( 0.313726, 0.486275, 0.486275, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HomeButton" type="TextureButton" parent="."]
+margin_right = 150.0
+margin_bottom = 150.0
+focus_mode = 0
+theme = ExtResource( 8 )
+enabled_focus_mode = 0
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 6 )
+
+[node name="HighScoreButton" type="Button" parent="."]
+margin_left = 50.0
+margin_top = 170.0
+margin_right = 530.0
+margin_bottom = 370.0
+theme = ExtResource( 7 )
+disabled = true
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextLabel" type="Label" parent="HighScoreButton"]
+margin_right = 477.0
+margin_bottom = 60.0
+custom_fonts/font = ExtResource( 12 )
+custom_colors/font_color = Color( 0.156863, 0.243137, 0.243137, 1 )
+text = "Highscore"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ValueLabel" type="Label" parent="HighScoreButton"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -238.0
+margin_top = -144.0
+margin_right = 239.0
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 0.156863, 0.243137, 0.243137, 1 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreButton" type="Button" parent="."]
+margin_left = 550.0
+margin_top = 170.0
+margin_right = 1030.0
+margin_bottom = 370.0
+theme = ExtResource( 7 )
+disabled = true
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextLabel" type="Label" parent="ScoreButton"]
+margin_left = 2.0
+margin_right = 476.0
+margin_bottom = 60.0
+custom_fonts/font = ExtResource( 12 )
+custom_colors/font_color = Color( 0.156863, 0.243137, 0.243137, 1 )
+text = "Score"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ValueLabel" type="Label" parent="ScoreButton"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -238.5
+margin_top = -144.0
+margin_right = 238.5
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 0.156863, 0.243137, 0.243137, 1 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UndoButton" type="Button" parent="."]
+margin_left = 550.0
+margin_top = 1390.0
+margin_right = 1030.0
+margin_bottom = 1549.0
+focus_mode = 0
+theme = ExtResource( 8 )
+enabled_focus_mode = 0
+text = "Undo"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewButton" type="Button" parent="."]
+margin_left = 50.0
+margin_top = 1390.0
+margin_right = 530.0
+margin_bottom = 1549.0
+focus_mode = 0
+theme = ExtResource( 8 )
+enabled_focus_mode = 0
+text = "New"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Target" parent="." instance=ExtResource( 3 )]
+margin_left = 766.986
+margin_top = 452.02
+margin_right = 958.986
+margin_bottom = 636.02
+enabled_focus_mode = 0
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+margin_left = 122.784
+margin_top = 1005.12
+margin_right = 314.784
+margin_bottom = 1197.12
+enabled_focus_mode = 0
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ClickAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+
+[node name="MoveAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 13 )
+
+[node name="Admob" type="Node" parent="."]
+script = ExtResource( 1 )
+is_real = true
+banner_on_top = false
+banner_id = "ca-app-pub-7971246227051167/1864458540"
+rewarded_id = "ca-app-pub-7971246227051167/9990360574"
+child_directed = true
+is_personalized = false
+
+[node name="RossPopup" parent="." instance=ExtResource( 5 )]
+margin_left = 930.0
+margin_right = 1080.0
+margin_bottom = 150.0
+
+[node name="AdPopup" type="Popup" parent="."]
+margin_left = 550.0
+margin_top = 900.0
+margin_right = 1030.0
+margin_bottom = 1340.0
+theme = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="AdPopup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 12 )
+custom_colors/font_color = Color( 0.854902, 0.905882, 0.905882, 1 )
+text = "Hey! 
+That is cheating! 
+... fine,  you can do it, but you will need to watch an ad. OK?"
+align = 1
+autowrap = true
+
+[node name="ShowAdd" type="Button" parent="AdPopup"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -176.0
+margin_top = -136.0
+margin_right = 176.0
+margin_bottom = -43.0001
+theme = ExtResource( 7 )
+custom_fonts/font = ExtResource( 12 )
+text = "OK"
+
+[node name="CloseAdPopup" type="TextureButton" parent="AdPopup"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -70.0
+margin_bottom = 70.0
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 11 )
+texture_hover = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WarningPopup" type="Popup" parent="."]
+margin_left = 50.0
+margin_top = 1564.0
+margin_right = 1050.0
+margin_bottom = 1691.0
+theme = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="WarningPopup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -19.9999
+margin_bottom = 7.62939e-06
+custom_fonts/font = ExtResource( 12 )
+custom_colors/font_color = Color( 0.854902, 0.905882, 0.905882, 1 )
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 540, 960 )
+current = true
+[connection signal="pressed" from="HomeButton" to="." method="_on_HomeButton_pressed"]
+[connection signal="pressed" from="UndoButton" to="." method="_on_UndoButton_pressed"]
+[connection signal="pressed" from="NewButton" to="." method="_on_NewButton_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="rewarded" from="Admob" to="." method="_on_Admob_rewarded"]
+[connection signal="rewarded_video_closed" from="Admob" to="." method="_on_Admob_rewarded_video_closed"]
+[connection signal="pressed" from="AdPopup/ShowAdd" to="." method="_on_ShowAdd_pressed"]
+[connection signal="pressed" from="AdPopup/CloseAdPopup" to="." method="_on_CloseAdPopup_pressed"]

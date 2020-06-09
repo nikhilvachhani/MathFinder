@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Player_theme.tres" type="Theme" id=1]
+
+[node name="Player" type="Button"]
+margin_right = 192.0
+margin_bottom = 192.0
+theme = ExtResource( 1 )
+disabled = true
+text = "0"
